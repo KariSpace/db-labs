@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <!--===============================================================================================-->
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class="limiter">
+        <div class="fixed">
+            <h1 class="h1d">Librarys CRM</h1>
+            <form class="input" action="" method="post">
+
+                <label for="command">
+                    <p class="padding10">Command:</p>
+                </label>
+                <input class="w70" type="text" name="command">
+                <input class="button" type="submit">
+            </form>
+        </div>
+        <div class="container-table100">
+            <div class="wrap-table100">
+
+                {% for table in data %}
+                <div class="table100 ver1 m-b-110">
+                    <h2 class="h1d, h2d" id="{{ table }}">{{ table }}</h2>
+                    <table data-vertable="ver1">
+                        <thead>
+                            <tr>
+                                {% for name in data[table][0] %}
+                                <th class="column100 column1" data-column="column1">{{ name }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line in data[table][1] %}
+                            <tr class="row100">
+                                {% for t in line %}
+                                <td class="column100 column1" data-column="column1"> {{ t }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                {% for table in data %}
+                <div class="table100 ver1 m-b-110">
+                    <table data-vertable="ver1">
+                        <thead>
+                            <tr>
+                                {% for name in data[table][0] %}
+                                <th class="column100 column1" data-column="column1">{{ name }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line in data[table][1] %}
+                            <tr class="row100">
+                                {% for t in line %}
+                                <td class="column100 column1" data-column="column1"> {{ t }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ url_for('static',filename='vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <!-- <script src="{{ url_for('static',filename='js/main.js') }}"></script> -->
+
+    </div>
+
+</body>
+
+</html>
