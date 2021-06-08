@@ -13,6 +13,7 @@ def table_display():
 
     if request.method == 'POST':
         command = request.form.get('command')
+        print(command)
         message = psql.execute_fetch(command)
         return render_template("response.html", command = command, message = message)
 
@@ -30,6 +31,8 @@ def init():
     psql.execute_file("./sql_files/load_sample_data.sql")
     print("database initialised")
 
+
+   
 init()
 
 app.run()

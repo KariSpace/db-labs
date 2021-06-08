@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 class Psql:
 
-    def __init__(self, password, dbname = 'lab', user ='postgres1', host='localhost'):
+    def __init__(self, password, dbname, user, host='localhost'):
 
         self.conn = psycopg2.connect(dbname = dbname,
                                 user = user, 
@@ -19,7 +19,7 @@ class Psql:
         self.cursor.execute(text)
         data = self.cursor.fetchall()
         print(tabulate(data, tablefmt='orgtbl'))
-        # self.cursor.close()
+        self.cursor.close()
 
 
     def execute_file(self, file_path):
@@ -28,6 +28,7 @@ class Psql:
 
     def execute_fetch(self, command):
         self.cursor.execute(command)
+        self.conn.commit()
         return self.cursor.fetchall()
 
     def get_table_contents(self, table_name):

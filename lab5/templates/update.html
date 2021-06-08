@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>{{t}}</title>
+	</head>
+	<style>	
+		h1{
+			font-family:"Arial Black", Gadget, sans-serif;
+		}
+		body{
+			background-color:white;
+		}
+	</style>
+<body>
+	<h1>{{h}}</h1>
+	<hr>
+	<h3>Update boooks with a reference</h3>
+	<form action="/action3" method="POST">
+	{% for boook in boooks %}
+		Unique Object ID : {{ boook['_id'] }}<br/>
+	<input type="text" name="_id" value="{{ boook['_id'] }}" hidden>
+
+	<table>
+	<tr>
+	<td>boook Name</td><td> : </td><td><input type="text" name="name" value="{{ boook['name'] }}" placeholder="{{ boook['name'] }}"></td>
+	</tr>
+	<tr>
+	<td>Author</td><td> : </td><td><textarea type="text" name="desc" rows=3 cols=30 placeholder="{{ boook['desc'] }}"> {{ boook['desc'] }} </textarea></td>
+	</tr>
+	<tr>
+	<td>Date</td><td> : </td><td><input type="text" name="date" value="{{ boook['date'] }}" placeholder="{{ boook['date'] }}"></td>
+	</tr>
+	
+	</table>
+	{% endfor %}
+		<button type="submit"> Update boook </button>
+		<br/>
+	</form>
+	<a href="/">Return to boookList</a>
+</body>
+</html>

@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <title>Response</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+        <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <!--===============================================================================================-->
+
 </head>
 <body>
-    <form class="input" action="" method="post">
 
-        <label for="command"><h2 class="padding10">Command</h2></label>
-        <input class="w70" type="text" name="command">
-        <input class="button" type="submit">
+            <div class="fixed">
+            <h1 class="h1d">Librarys CRM</h1>
+            <form class="input" action="" method="post">
 
-    </form>
+                <label for="command">
+                    <p class="padding10">Command:</p>
+                </label>
+                <input class="w70" type="text" name="command">
+                <input class="button" type="submit">
+            </form>
+        </div>
     <h2>{{command}}</h2>
     <div class="container">
-        <div class="white">
-            <p>{{message}}</p>
+        <div class="white" style="   margin-top: 300px;">
+                      <div>{{message}}</div>
+
         </div>
     </div> 
 </body>

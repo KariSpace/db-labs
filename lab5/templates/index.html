@@ -1,0 +1,103 @@
+<html>
+
+<head>
+	<title>{{t}}</title>
+	<!-- href="/static/assets/style.css"-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/emoji.css')}}">
+	<script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+	<script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="{{ url_for('static',filename='vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+	<!--===============================================================================================-->
+
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="fixed">
+			<h1 class="h1d">{{ h }}</h1>
+			<ul>
+				<li><a href="/list" class="{{ a1 }}">ALL</a></li>
+				<li><a href="/" class="{{ a2 }}">Not Published</a></li>
+				<li><a href="/completed" class="{{ a3 }}">Published</a></li>
+			</ul>
+			<hr>
+			{% if books[0] %}
+			<div span="right">
+				<form action="/search" method="GET" class="fddf">
+					<b style=" padding: 10px;">Add book:</b>
+					<select name="refer" required>
+						<option value="name">Book Name</option>
+						<option value="desc">Author</option>
+						<option value="date">Date</option>
+						<option value="pr">Priority</option>
+					</select>
+					<input type="text" name="key" class="w70" placeholder="Search boook" size="15" />
+					<button type="submit" class="button">Search</button></td>
+				</form>
+				<form action="/action" method="POST" class="fddf">
+					<b style=" padding: 10px;">Search book:</b>
+					<input type="text" name="name" placeholder="Enter Book Name here..." />
+					<input name="desc" rows="1" cols="30" placeholder="Enter Author here..." required></input></td>
+					<input type="text" name="date" placeholder="Enter date here..." />
+					<button type="submit" class="button"> Create </button>
+
+				</form>
+				</table>
+			</div>
+		</div>
+		<div class="container-table100">
+			<div class="wrap-table100">
+
+				<div class="table100 ver1 m-b-110">
+					<h1 class="h1d">Books LIST :</h1>
+					<table data-vertable="ver1">
+						<tr id="row" class="aaa">
+							<th class="status column100 column1" data-column="column1">Status</th>
+							<th class="name column100 column1" data-column="column1">boook Name</th>
+							<th class="desc column100 column1" data-column="column1">Author Name</th>
+							<th class="date column100 column1" data-column="column1">Date</th>
+							<th class="func1 column100 column1" data-column="column1">Remove</th>
+							<th class="func2 column100 column1" data-column="column1">Modify</th>
+						</tr>
+						{% for todo in books %}
+						<tr class="datas">
+							<td><a href="./done?_id={{ todo['_id'] }}"><input type="image"
+										src="static/images/{{todo['done']}}.png" alt="Submit ME"></a></td>
+							<td class="name column100 column1" data-column="column1">{{ todo["name"] }}</td>
+							<td class="desc column100 column1" data-column="column1">{{ todo["desc"] }}</td>
+							<td class="date column100 column1" data-column="column1">{{ todo["date"] }}</td>
+							<td class="func1 column100 column1" data-column="column1"><a
+									href="./remove?_id={{ todo['_id'] }}"><button class="button"
+										type="submit">DELETE</button></a>
+							</td>
+							<td class="func1 column100 column1" data-column="column1"><a
+									href="./update?_id={{ todo['_id'] }}"><button class="button"
+										type="submit">EDIT</button></a>
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+				{% else %}
+				<h4>No boooks in the List !!</h4>
+				{% endif %}
+				<hr />
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
