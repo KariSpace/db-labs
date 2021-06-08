@@ -7,7 +7,7 @@ app = Flask(__name__)
 title = "Library CRM"
 heading = "Library CRM"
 
-client = MongoClient("mongodb+srv://Kariuser:OT7qbK93y4CcQXh6@cluster0.9aggo.mongodb.net/labs?authSource=admin&replicaSet=atlas-7byvxq-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true") #host uri
+client = MongoClient("CONNECT LINK") #host uri
 db = client.labs    #Select the database
 books = db.books #Select the collection name
 
